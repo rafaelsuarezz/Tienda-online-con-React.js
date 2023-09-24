@@ -68,7 +68,7 @@ const Card = (data) => {
 
             </figure>
             
-            <p className = "flex justify-between">
+            <p className = "flex justify-between items-center p-1">
 
                 <span className = "text-sm font-light" >
                     {data.data.title}

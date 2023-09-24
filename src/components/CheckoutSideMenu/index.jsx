@@ -89,7 +89,7 @@ const CheckoutSideMenu = () => {
 
                 <Link to = "/my-orders/last" >
                     <button 
-                        className = "w-full py-3 rounded-lg font-medium bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100"
+                        className = "w-full py-3 rounded-lg font-medium border border-black disabled:text-black/40 bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100"
                         onClick={() => handleCheckout() }
                     >
                         Checkout

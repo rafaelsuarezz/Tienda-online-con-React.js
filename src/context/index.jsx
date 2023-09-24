@@ -3,7 +3,36 @@ import { createContext, useState, useEffect } from "react";
 
 export const ShoppingCartContext = createContext() 
 
+// Guardando datos en el local Storage de "account y Sing-out"
+
+export const initializeLocalStorage = () => {
+    const accountInLocalStorage = localStorage.getItem("account")
+    const signOutInLocalStorage = localStorage.getItem("sign-out")
+    let parsedAccount
+    let parsedSignOut
+
+    if (!accountInLocalStorage) {
+        localStorage.setItem( "account", JSON.stringify({}) )
+        parsedAccount = {}
+    } else {
+        parsedAccount = JSON.parse(accountInLocalStorage)
+    }
+
+    if (!signOutInLocalStorage) {
+        localStorage.setItem("sign-out", JSON.stringify(false))
+        parsedSignOut = false
+    } else {
+        parsedSignOut = JSON.parse(signOutInLocalStorage)
+    }
+}
+
 export const ShoppingCartProvides = ({ children }) => {
+
+    // My account
+    const [account, setAccount] = useState({})
+
+  // Sign out
+    const [signOut, setSignOut] = useState(false)
 
     //  Se agrega la cantidad al carrito
 
@@ -117,7 +146,11 @@ export const ShoppingCartProvides = ({ children }) => {
                 setSearchByTitle,
                 Search,
                 searchByCategory,
-                setSearchByCategory
+                setSearchByCategory,
+                account,
+                setAccount,
+                signOut,
+                setSignOut
             }}
         >
             { children }
